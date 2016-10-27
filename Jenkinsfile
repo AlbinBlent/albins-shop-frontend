@@ -51,5 +51,6 @@ node {
 input 'Does staging look ok? Deploy to production?'
 
 node {
-
+    //docker build -t albins-shop-frontend:${env.BUILD_DISPLAY_NAME}
+    sh 'docker-cloud service redeploy albins-shop-frontend'
 }
