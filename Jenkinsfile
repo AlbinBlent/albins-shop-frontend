@@ -1,3 +1,5 @@
+stageUrl = 'localhost:3000'
+
 stage 'CI'
 node {
     //checkout scm
@@ -48,7 +50,7 @@ node {
     sh 'docker-compose up -d --build'
 }
 
-input "Does <a href="localhost:3000">staging</a> look ok? Deploy to production?"
+input message: "Does ${stageUrl} look ok? Deploy to production?"
 
 node {
     sh 'docker stop albins-shop-frontend-stage'
