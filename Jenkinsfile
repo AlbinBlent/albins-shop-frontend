@@ -50,14 +50,13 @@ node {
     sh 'docker-compose up -d --build'
 }
 
-input message: "Does ${stageUrl}/ look ok? Deploy to production?"
+input message: "Does ${stageUrl} look ok? Deploy to production?"
 
-dockerBuildTagForProd = "albin/albins-shop-frontend:build-'${env.BUILD_NUMBER}'"
 dockerLatestTagForProd = "albin/albins-shop-frontend:latest"
 
 node {
     sh 'docker stop albins-shop-frontend-stage'
-    sh "docker build -t '${dockerBuildTagForProd}' -t ${dockerLatestTagForProd}."
-    sh "docker push '${dockerBuildTagForProd}'"
+    sh "docker build -t ${dockerLatestTagForProd} ."
+    sh "docker push '${dockerLatestTagForProd}'"
     sh 'docker-cloud service redeploy albins-shop-frontend'
 }
