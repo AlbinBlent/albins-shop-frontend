@@ -52,11 +52,12 @@ node {
 
 input message: "Does ${stageUrl}/ look ok? Deploy to production?"
 
-dockerTagForProd = "albin/albins-shop-frontend:build-'${env.BUILD_NUMBER}'"
+dockerBuildTagForProd = "albin/albins-shop-frontend:build-'${env.BUILD_NUMBER}'"
+dockerLatestTagForProd = "albin/albins-shop-frontend:latest"
 
 node {
     sh 'docker stop albins-shop-frontend-stage'
-    sh "docker build -t '${dockerTagForProd}' ."
-    sh "docker push '${dockerTagForProd}'"
+    sh "docker build -t '${dockerBuildTagForProd}' -t ${dockerLatestTagForProd}."
+    sh "docker push '${dockerBuildTagForProd}'"
     sh 'docker-cloud service redeploy albins-shop-frontend'
 }
