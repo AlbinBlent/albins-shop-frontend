@@ -1,6 +1,13 @@
-node_modules/
-bower_components/
 *.log
-
 build/
 dist/
+logs/*
+!.gitkeep
+node_modules/
+bower_components/
+tmp
+.DS_Store
+test-results/
+
+## Directory-based project format:
+.idea/
