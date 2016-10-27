@@ -50,7 +50,7 @@ node {
     sh 'docker-compose up -d --build'
 }
 
-input message: "Does ${stageUrl} look ok? Deploy to production?"
+input message: "Does ${stageUrl}/ look ok? Deploy to production?"
 
 node {
     sh 'docker stop albins-shop-frontend-stage'
