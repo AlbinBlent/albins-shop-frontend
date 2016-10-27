@@ -20,6 +20,9 @@ node {
     //    step([$class: 'JUnitResultArchiver',
     //          testResults: 'test-results/**/test-results.xml'])
 
+    archiveArtifacts artifacts: 'app/**', excludes: null
+    publishHTML([allowMissing: true, alwaysLinkToLastBuild: false, keepAll: false, reportDir: 'tests/', reportFiles: 'tests.html', reportName: 'Karma test report'])
+
 }
 
 // parallel integration testing
