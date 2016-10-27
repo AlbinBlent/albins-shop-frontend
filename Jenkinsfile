@@ -17,8 +17,8 @@ node {
 
 
     // archive karma test results (karma is configured to export junit xml files)
-    //    step([$class: 'JUnitResultArchiver',
-    //          testResults: 'test-results/**/test-results.xml'])
+        step([$class: 'JUnitResultArchiver',
+              testResults: 'test-results/**/test-results.xml'])
 
     archiveArtifacts artifacts: 'app/**', excludes: null
     publishHTML([allowMissing: true, alwaysLinkToLastBuild: false, keepAll: false, reportDir: 'test-reports', reportFiles: 'index.html', reportName: 'Karma test report'])
