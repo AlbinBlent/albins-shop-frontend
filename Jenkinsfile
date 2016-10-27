@@ -3,7 +3,6 @@ stageUrl = 'localhost:3000'
 stage 'CI'
 node {
     //checkout scm
-
     git branch: 'master',
         url: 'https://github.com/AlbinBlent/albins-shop-frontend.git'
 
