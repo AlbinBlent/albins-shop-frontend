@@ -48,10 +48,10 @@ node {
     sh 'docker-compose up -d --build'
 }
 
-input 'Does staging look ok? Deploy to production?'
+input 'Does <a href="localhost:3000">staging</a> look ok? Deploy to production?'
 
 node {
     sh 'docker stop albins-shop-frontend-stage'
-    sh 'docker build -t albins-shop-frontend:${env.BUILD_DISPLAY_NAME}'
+    sh "docker build -t albins-shop-frontend:'${env.BUILD_DISPLAY_NAME}'"
     sh 'docker-cloud service redeploy albins-shop-frontend'
 }
