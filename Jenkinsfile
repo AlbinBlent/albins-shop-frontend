@@ -21,7 +21,7 @@ node {
     //          testResults: 'test-results/**/test-results.xml'])
 
     archiveArtifacts artifacts: 'app/**', excludes: null
-    publishHTML([allowMissing: true, alwaysLinkToLastBuild: false, keepAll: false, reportDir: 'tests', reportFiles: 'tests.html', reportName: 'Karma test report'])
+    publishHTML([allowMissing: true, alwaysLinkToLastBuild: false, keepAll: false, reportDir: 'test-reports', reportFiles: '*', reportName: 'Karma test report'])
 
 }
 
