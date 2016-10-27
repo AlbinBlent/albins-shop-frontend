@@ -13,11 +13,11 @@ node {
 
     sh 'npm run test-single-run -- --browsers PhantomJS'
 
-    /*
+
     // archive karma test results (karma is configured to export junit xml files)
-        step([$class: 'JUnitResultArchiver',
-              testResults: 'test-results/**/test-results.xml'])
-              */
+    //    step([$class: 'JUnitResultArchiver',
+    //          testResults: 'test-results/**/test-results.xml'])
+
 }
 
 // parallel integration testing
@@ -35,10 +35,10 @@ def runTests(browser){
         sh 'rm -rf'
         unstash 'everything'
         sh "npm run test-single-run -- --browsers ${browser}"
-        /*
-                step([$class: 'JUnitResultArchiver',
-                  testResults: 'test-results/**/test-results.xml'])
-        */
+
+        //        step([$class: 'JUnitResultArchiver',
+        //          testResults: 'test-results/**/test-results.xml'])
+
     }
 }
 
